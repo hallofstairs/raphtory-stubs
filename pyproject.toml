@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "raphtory-stubs"
+version = "0.1.0"
+description = "Type stubs for the Raphtory library"
+readme = "README.md"
+authors = [{ name = "Jett Hollister", email = "jetthollister@pm.me" }]
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+keywords = ["raphtory", "stubs", "type hints"]
+dependencies = ["raphtory"]
+requires-python = ">=3.7"
+
+[project.urls]
+Homepage = "https://github.com/hallofstairs/raphtory-stubs"
+"Bug Tracker" = "https://github.com/hallofstairs/raphtory-stubs/issues"
+
+[tool.setuptools.package-data]
+raphtory_stubs = ["py.typed"]
