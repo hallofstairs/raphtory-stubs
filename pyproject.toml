@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "raphtory-stubs"
-version = "0.1.1"
+version = "0.1.2"
 description = "Type stubs for the Raphtory library"
 readme = "README.md"
 authors = [{ name = "Jett Hollister", email = "jetthollister@pm.me" }]
