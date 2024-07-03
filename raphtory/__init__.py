@@ -14,6 +14,8 @@ import pandas as pd
 
 T = TypeVar("T", bound=Union["GraphView", "Node", "Edge"])
 
+# TODO: Edges, Nodes classes
+
 
 class VectorisedGraph:
     ...
@@ -375,156 +377,230 @@ class MutableNode(Node):
         ...
 
 
-# TODO: Edges, Nodes
 class Edge:
+    """Represents an edge in the graph. An edge is a directed connection between two nodes."""
+
     def after(self, start: Union[int, datetime, str]) -> "Edge":
+        """Create a view of the Edge including all events after start (exclusive)."""
         ...
 
     def at(self, time: Union[int, datetime, str]) -> "Edge":
+        """Create a view of the Edge including all events at time."""
         ...
 
     def before(self, end: Union[int, datetime, str]) -> "Edge":
+        """Create a view of the Edge including all events before end (exclusive)."""
         ...
 
     @property
     def date_time(self) -> datetime:
+        """Gets the datetime of an exploded edge."""
         ...
 
     def default_layer(self) -> "Edge":
+        """Return a view of Edge containing only the default edge layer.
+
+        :returns: The layered view
+        :rtype: Edge
+        """
         ...
 
     def deletions(self) -> list[int]:
+        """Returns a list of timestamps of when an edge is deleted."""
         ...
 
     def deletions_data_time(self) -> list[datetime]:
+        """Returns a list of timestamps of when an edge is deleted."""
         ...
 
     @property
-    def dst(self) -> Node:
+    def dst(self) -> "Node":
+        """Returns the destination node of the edge."""
         ...
 
     @property
     def earliest_date_time(self) -> datetime:
+        """Gets the earliest datetime of an edge."""
         ...
 
     @property
     def earliest_time(self) -> int:
+        """Gets the earliest time of an edge."""
         ...
 
     @property
     def end(self) -> Optional[int]:
+        """Gets the latest time that this Edge is valid."""
         ...
 
     @property
     def end_date_time(self) -> Optional[datetime]:
+        """Gets the latest datetime that this Edge is valid."""
         ...
 
     def exclude_layer(self, name: str) -> "Edge":
+        """Return a view of Edge containing all layers except the excluded name.
+
+        Errors if any of the layers do not exist.
+        """
         ...
 
     def exclude_layers(self, names: list[str]) -> "Edge":
+        """Return a view of Edge containing all layers except the excluded names.
+
+        Errors if any of the layers do not exist.
+        """
         ...
 
     def exclude_valid_layer(self, name: str) -> "Edge":
+        """Return a view of Edge containing all layers except the excluded name.
+
+        :param name: Layer name that is excluded for the new view
+        :type name: str
+        """
         ...
 
     def exclude_valid_layers(self, names: list[str]) -> "Edge":
+        """Return a view of Edge containing all layers except the excluded names.
+
+        :param names: List of layer names that are excluded for the new view
+        :type names: list[str]
+        """
         ...
 
-    def expanding(self, step: Union[int, str]) -> WindowSet:
+    def expanding(self, step: Union[int, str]) -> "WindowSet":
+        """Creates a WindowSet with the given step size using an expanding window."""
         ...
 
     def explode(self) -> list["Edge"]:
+        """Explodes an edge and returns all instances it had been updated as separate edges."""
         ...
 
     def explode_layers(self) -> list["Edge"]:
+        """Explode the edge into its constituent layers."""
         ...
 
     def has_layer(self, name: str) -> bool:
+        """Check if Edge has the layer 'name'."""
         ...
 
     def history(self) -> list[int]:
+        """Returns a list of timestamps of when an edge is added or a change to an edge is made."""
         ...
 
     def history_date_time(self) -> list[datetime]:
+        """Returns a list of timestamps of when an edge is added or a change to an edge is made."""
         ...
 
     @property
     def id(self) -> Union[int, str]:
+        """The id of the edge."""
         ...
 
     def is_deleted(self) -> bool:
+        """Check if the edge is currently deleted."""
         ...
 
     def is_self_loop(self) -> bool:
+        """Check if the edge is on the same node."""
         ...
 
     def is_valid(self) -> bool:
+        """Check if the edge is currently valid (i.e., not deleted)."""
         ...
 
     @property
     def latest_date_time(self) -> datetime:
+        """Gets the latest datetime of an edge."""
         ...
 
     @property
     def latest_time(self) -> int:
+        """Gets the latest time of an edge."""
         ...
 
     def layer(self, name: str) -> "Edge":
+        """Return a view of Edge containing the layer 'name'.
+
+        Errors if the layer does not exist.
+        """
         ...
 
     @property
     def layer_name(self) -> str:
+        """Gets the name of the layer this edge belongs to, assuming it only belongs to one layer."""
         ...
 
     @property
     def layer_names(self) -> list[str]:
+        """Gets the names of the layers this edge belongs to."""
         ...
 
     def layers(self, names: list[str]) -> "Edge":
+        """Return a view of Edge containing all layers names.
+
+        Errors if any of the layers do not exist.
+        """
         ...
 
     @property
-    def nbr(self) -> Node:
+    def nbr(self) -> "Node":
+        """Returns the node at the other end of the edge (same as dst() for out-edges and src() for in-edges)."""
         ...
 
     @property
     def properties(self) -> dict[str, Any]:
+        """Returns a view of the properties of the edge."""
         ...
 
     def rolling(
         self, window: Union[int, str], step: Optional[Union[int, str]] = None
-    ) -> WindowSet:
+    ) -> "WindowSet":
+        """Creates a WindowSet with the given window size and optional step using a rolling window."""
         ...
 
     def shrink_end(self, end: Union[int, datetime, str]) -> "Edge":
+        """Set the end of the window to the smaller of end and self.end()."""
         ...
 
     def shrink_start(self, start: Union[int, datetime, str]) -> "Edge":
+        """Set the start of the window to the larger of start and self.start()."""
         ...
 
     def shrink_window(
         self, start: Union[int, datetime, str], end: Union[int, datetime, str]
     ) -> "Edge":
+        """Shrink both the start and end of the window.
+
+        Same as calling shrink_start followed by shrink_end but more efficient.
+        """
         ...
 
     @property
-    def src(self) -> Node:
+    def src(self) -> "Node":
+        """Returns the source node of the edge."""
         ...
 
     @property
     def start(self) -> Optional[int]:
+        """Gets the start time for rolling and expanding windows for this Edge."""
         ...
 
     @property
     def start_date_time(self) -> Optional[datetime]:
+        """Gets the earliest datetime that this Edge is valid."""
         ...
 
     @property
     def time(self) -> int:
+        """Gets the time of an exploded edge."""
         ...
 
     def valid_layers(self, names: list[str]) -> "Edge":
+        """Return a view of Edge containing all layers names.
+
+        Any layers that do not exist are ignored.
+        """
         ...
 
     def window(
@@ -532,10 +608,12 @@ class Edge:
         start: Optional[Union[int, datetime, str]],
         end: Optional[Union[int, datetime, str]],
     ) -> "Edge":
+        """Create a view of the Edge including all events between start (inclusive) and end (exclusive)."""
         ...
 
     @property
     def window_size(self) -> Optional[int]:
+        """Get the window size (difference between start and end) for this Edge."""
         ...
 
 
