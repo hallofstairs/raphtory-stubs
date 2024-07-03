@@ -2,7 +2,6 @@ from datetime import datetime
 from typing import (
     Any,
     Callable,
-    Dict,
     Generic,
     Iterator,
     Optional,
@@ -356,7 +355,24 @@ class Node:
         ...
 
 
-# TODO: MutableNode
+class MutableNode(Node):
+    def add_constant_properties(self, properties: dict[str, Any]) -> None:
+        """Add constant properties to a node in the graph."""
+        ...
+
+    def add_updates(
+        self, t: Union[int, str, datetime], properties: Optional[dict[str, Any]] = None
+    ) -> None:
+        """Add updates to a node in the graph at a specified time."""
+        ...
+
+    def set_node_type(self, properties: dict[str, Any]) -> None:
+        """Add constant properties to a node in the graph."""
+        ...
+
+    def update_constant_properties(self, properties: dict[str, Any]) -> None:
+        """Add constant properties to a node in the graph."""
+        ...
 
 
 # TODO: Edges, Nodes
