@@ -10,7 +10,7 @@ from typing import (
 import networkx as nx
 import pandas as pd
 
-# TODO: Edges, Nodes classes
+# TODO: Edges, Nodes, TemporalProperties
 
 
 class VectorisedGraph:
