@@ -2,17 +2,13 @@ from datetime import datetime
 from typing import (
     Any,
     Callable,
-    Generic,
     Iterator,
     Optional,
-    TypeVar,
     Union,
 )
 
 import networkx as nx
 import pandas as pd
-
-T = TypeVar("T", bound=Union["GraphView", "Node", "Edge"])
 
 # TODO: Edges, Nodes classes
 
@@ -99,36 +95,8 @@ class ConstProperties:
         ...
 
 
-class WindowSet(Generic[T]):
-    def __init__(
-        self, obj: T, window: Union[int, str], step: Union[int, str, None] = None
-    ):
-        ...
-
-    def __iter__(self) -> Iterator[T]:
-        ...
-
-    def __next__(self) -> T:
-        ...
-
-    def count(self) -> int:
-        ...
-
-    @property
-    def start(self) -> int:
-        ...
-
-    @property
-    def end(self) -> int:
-        ...
-
-    @property
-    def step(self) -> int:
-        ...
-
-    @property
-    def window(self) -> int:
-        ...
+class WindowSet:
+    ...
 
 
 class Node:
