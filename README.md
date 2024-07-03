@@ -1,6 +1,6 @@
 # raphtory-stubs
 
-🚧 WIP! Many of these types are incomplete and/or incorrect 🚧
+🚧 WIP! Some of these types are incomplete and/or incorrect 🚧
 
 Type stubs for the [Raphtory](https://github.com/pometry/raphtory) library.
 
