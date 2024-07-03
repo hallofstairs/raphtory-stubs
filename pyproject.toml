@@ -24,4 +24,4 @@ Homepage = "https://github.com/hallofstairs/raphtory-stubs"
 "Bug Tracker" = "https://github.com/hallofstairs/raphtory-stubs/issues"
 
 [tool.setuptools.package-data]
-raphtory_stubs = ["py.typed"]
+raphtory = ["py.typed", "*.pyi"]
