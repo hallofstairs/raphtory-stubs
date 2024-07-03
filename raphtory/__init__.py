@@ -358,12 +358,16 @@ class Node:
 
 
 class MutableNode(Node):
-    def add_constant_properties(self, properties: dict[str, Any]) -> None:
+    def add_constant_properties(
+        self, properties: dict[str, Any]
+    ) -> None:  # TODO: Return Result object
         """Add constant properties to a node in the graph."""
         ...
 
     def add_updates(
-        self, t: Union[int, str, datetime], properties: Optional[dict[str, Any]] = None
+        self,
+        t: Union[int, str, datetime],
+        properties: Optional[dict[str, Any]] = None,  # TODO: Return Result object
     ) -> None:
         """Add updates to a node in the graph at a specified time."""
         ...
@@ -373,7 +377,7 @@ class MutableNode(Node):
         ...
 
     def update_constant_properties(self, properties: dict[str, Any]) -> None:
-        """Add constant properties to a node in the graph."""
+        """Update constant properties of a node in the graph."""
         ...
 
 
@@ -614,6 +618,29 @@ class Edge:
     @property
     def window_size(self) -> Optional[int]:
         """Get the window size (difference between start and end) for this Edge."""
+        ...
+
+
+class MutableEdge(Edge):
+    def add_constant_properties(
+        self, properties: dict[str, Any], layer: Optional[str] = None
+    ) -> None:  # TODO: Return Result object
+        """Add constant properties to an edge in the graph."""
+        ...
+
+    def add_updates(
+        self,
+        t: Union[int, str, datetime],
+        properties: Optional[dict[str, Any]] = None,
+        layer: Optional[str] = None,
+    ) -> None:  # TODO: Return Result object
+        """Add updates to an edge in the graph at a specified time."""
+        ...
+
+    def update_constant_properties(
+        self, properties: dict[str, Any], layer: Optional[str] = None
+    ) -> None:
+        """Update constant properties of an edge in the graph."""
         ...
 
 
