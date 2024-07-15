@@ -1,6 +1,6 @@
 # raphtory-stubs
 
-🚧 WIP! Some of these types are incomplete and/or incorrect 🚧
+🚧 ARCHIVED! These stubs [were moved](https://github.com/Pometry/Raphtory/pull/1682#event-13504307157) into the core Raphtory library 🚧
 
 Type stubs for the [Raphtory](https://github.com/pometry/raphtory) library.
 
